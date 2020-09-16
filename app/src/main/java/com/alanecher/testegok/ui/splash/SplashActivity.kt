@@ -1,9 +1,11 @@
-package com.alanecher.testegok
+package com.alanecher.testegok.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.alanecher.testegok.R
+import com.alanecher.testegok.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
