@@ -1,6 +1,6 @@
 package com.alanecher.testegok.di
 
-import com.alanecher.testegok.repository.ProducstRepositoryImpl
+import com.alanecher.testegok.repository.ProductsRepositoryImpl
 import com.alanecher.testegok.repository.ProductsRepository
 import com.alanecher.testegok.repository.remote.ProductsAPI
 import dagger.Module
@@ -27,6 +27,6 @@ class RepositoryModule {
     fun provideProductsRepository(
         api: ProductsAPI
     ): ProductsRepository {
-        return ProducstRepositoryImpl(api)
+        return ProductsRepositoryImpl(api)
     }
 }

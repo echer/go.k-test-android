@@ -60,22 +60,14 @@ class MainFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        progressBar.visibility = View.VISIBLE
+        viewModel.listProducts()
         viewModel.products.observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Resource.Status.SUCCESS -> {
-                    it
-                    progressBar.visibility = View.GONE
-                    if ((it.data as ProductsDTO).products.isNotEmpty()) productAdapter.setData(ArrayList(
-                        it.data.products))
-                    if ((it.data as ProductsDTO).spotlights.isNotEmpty()) spotAdapter.setData(ArrayList(
-                        it.data.spotlights))
-                    ImageLoader.loadImage(imgCash, it.data.cash.bannerURL)
-                }
-                Resource.Status.ERROR ->
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-
-                Resource.Status.LOADING ->
-                    progressBar.visibility = View.VISIBLE
+            if(it != null) {
+                progressBar.visibility = View.GONE
+                if (it.products.isNotEmpty()) productAdapter.setData(ArrayList(it.products))
+                if (it.spotlights.isNotEmpty()) spotAdapter.setData(ArrayList(it.spotlights))
+                ImageLoader.loadImage(imgCash, it.cash.bannerURL)
             }
         })
     }

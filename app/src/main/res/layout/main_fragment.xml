@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/logotipo_cash"
                         android:scaleType="fitCenter"
-                        app:loadImage="@{viewModel.products.data.cash.bannerURL}" />
+                        app:loadImage="@{viewModel.products.cash.bannerURL}" />
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
