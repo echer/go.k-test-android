@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,7 +13,7 @@
 
     </data>
 
-    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -48,7 +49,7 @@
                 android:contentDescription="@string/content_digio_logo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logo_digio" />
+                app:srcCompat="@drawable/ic_logo_digio_blue" />
 
             <TextView
                 android:id="@+id/txtBemVindo"
@@ -73,8 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgLogo"
                 tools:ignore="RtlSymmetry">
@@ -108,24 +107,37 @@
                 android:textColor="@color/colorGray"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/txtCash"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/txtCash"
                 app:layout_constraintTop_toTopOf="@+id/txtCash" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgCash"
+            <LinearLayout
+                android:id="@+id/crLayout"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/logotipo_cash"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCash"
-                app:loadImage="@{viewModel.products.data.cash.bannerURL}" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCash">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="16dp"
+                    app:cardCornerRadius="16dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgCash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/logotipo_cash"
+                        android:scaleType="fitCenter"
+                        app:loadImage="@{viewModel.products.data.cash.bannerURL}" />
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txtProducts"
@@ -138,10 +150,8 @@
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textColor="@color/colorBlue"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgCash" />
+                app:layout_constraintTop_toBottomOf="@+id/crLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerProduct"
@@ -151,10 +161,8 @@
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtProducts"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@+id/txtProducts">
 
             </androidx.recyclerview.widget.RecyclerView>
 
