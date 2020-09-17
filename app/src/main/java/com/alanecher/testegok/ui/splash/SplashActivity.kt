@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.alanecher.testegok.R
+import com.alanecher.testegok.ui.BaseActivity
 import com.alanecher.testegok.ui.main.MainActivity
+import dagger.android.support.DaggerAppCompatActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private val SPLASH_TIMEOUT: Long = 1400
 

@@ -1,15 +1,15 @@
 package com.alanecher.testegok.ui
 
-import android.app.Application
-import dagger.Component
+import com.alanecher.testegok.di.ApplicationComponent
+import com.alanecher.testegok.di.DaggerApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
-@Component
-interface ApplicationComponent {
 
-}
-
-class DigioApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
+class DigioApplication : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        val appComponent: ApplicationComponent = DaggerApplicationComponent.builder().application(this).build()
+        appComponent.inject(this)
+        return appComponent
     }
 }
