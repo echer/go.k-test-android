@@ -2,7 +2,7 @@
     <string name="app_name">GOK - Alan Echer</string>
     <string name="content_digio_logo">Logotipo da Digio</string>
     <string name="hello_user">Olá, Usuário</string>
-    <string name="digio">txt_digio</string>
+    <string name="digio">digio</string>
     <string name="txt_cash">Cash</string>
     <string name="logotipo_cash">Logotipo Cash</string>
     <string name="txt_produto">Produtos</string>

@@ -10,7 +10,6 @@ import com.alanecher.testegok.repository.domain.dto.ProductsDTO
 
 class MainViewModel @ViewModelInject constructor(repository: ProductsRepository) : ViewModel() {
     val loading = ObservableBoolean()
-    val error = ObservableBoolean()
     val products: LiveData<Resource<ProductsDTO>> = repository.listProducts()
 
 }
