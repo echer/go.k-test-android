@@ -1,7 +1,9 @@
 package com.alanecher.testegok.repository
 
+import androidx.lifecycle.LiveData
+import com.alanecher.testegok.repository.domain.Resource
 import com.alanecher.testegok.repository.domain.dto.ProductsDTO
 
 interface ProductsRepository {
-    suspend fun listProducst(): ProductsDTO
+    fun listProducts(): LiveData<Resource<ProductsDTO>>
 }

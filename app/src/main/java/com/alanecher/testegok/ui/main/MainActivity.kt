@@ -3,19 +3,19 @@ package com.alanecher.testegok.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alanecher.testegok.R
-import com.alanecher.testegok.ui.BaseActivity
-import com.alanecher.testegok.ui.DigioApplication
-import dagger.android.support.DaggerAppCompatActivity
-import okhttp3.OkHttpClient
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : BaseActivity() {
-
-    @Inject
-    lateinit var okHttpClient: OkHttpClient
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MainFragment.newInstance())
+                .commitNow()
+        }
     }
 }

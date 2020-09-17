@@ -2,6 +2,8 @@ package com.alanecher.testegok.di
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -14,6 +16,7 @@ const val connTimeout: Long = 20
 const val readTimeout: Long = 20
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class RetrofitModule {
 
     @Provides
