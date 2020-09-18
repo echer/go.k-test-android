@@ -16,18 +16,20 @@ class MainViewModel @ViewModelInject constructor(private val repository: Product
     ViewModel() {
     val loading = ObservableBoolean()
     val products = MutableLiveData<ProductsDTO>()
-    val error = ObservableBoolean()
+    val error = MutableLiveData<String>()
 
     fun listProducts() {
-        error.set(false)
+        error.value = ""
         loading.set(true)
         viewModelScope.launch {
             withContext(dispatcherProvider.default()) {
                 val result = repository.listProducts()
 
                 launch(dispatcherProvider.main()) {
-                    if (result is BaseResponse.Success) products.value = result.data
-                    if (result is BaseResponse.Error) error.set(true)
+                    if (result is BaseResponse.Success)
+                        products.value = result.data
+                    if (result is BaseResponse.Error)
+                        error.value = result.message
                     loading.set(false)
                 }
             }

@@ -70,5 +70,12 @@ class MainFragment : Fragment() {
                 ImageLoader.loadImage(imgCash, it.cash.bannerURL)
             }
         })
+        viewModel.error.observe(viewLifecycleOwner, {
+           if(it != null) {
+               Toast.makeText(context,"",Toast.LENGTH_LONG).show()
+               productAdapter.setData(arrayListOf())
+               spotAdapter.setData(arrayListOf())
+           }
+        })
     }
 }

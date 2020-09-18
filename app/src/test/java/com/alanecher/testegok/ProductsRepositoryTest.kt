@@ -141,10 +141,10 @@ class ProductsRepositoryTest {
         var response: BaseResponse<ProductsDTO> = productsRepository.listProducts()
 
         assertTrue(response is BaseResponse.Error)
-        /*assertEquals(
+        assertEquals(
             BaseResponse.Error(internalError).message,
             (response as BaseResponse.Error).message
-        )*/
+        )
     }
 
     @Test
@@ -161,6 +161,6 @@ class ProductsRepositoryTest {
         var response: BaseResponse<ProductsDTO> = productsRepository.listProducts()
 
         assertTrue(response is BaseResponse.Error)
-        //assertEquals(BaseResponse.Error(notFound).message, (response as BaseResponse.Error).message)
+        assertEquals(BaseResponse.Error(notFound).message, (response as BaseResponse.Error).message)
     }
 }
