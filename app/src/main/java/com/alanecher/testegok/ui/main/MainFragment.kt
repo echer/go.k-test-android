@@ -1,6 +1,7 @@
 package com.alanecher.testegok.ui.main
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,22 +61,32 @@ class MainFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        progressBar.visibility = View.VISIBLE
         viewModel.listProducts()
+
         viewModel.products.observe(viewLifecycleOwner, Observer {
             if(it != null) {
-                progressBar.visibility = View.GONE
                 if (it.products.isNotEmpty()) productAdapter.setData(ArrayList(it.products))
                 if (it.spotlights.isNotEmpty()) spotAdapter.setData(ArrayList(it.spotlights))
                 ImageLoader.loadImage(imgCash, it.cash.bannerURL)
             }
         })
+
         viewModel.error.observe(viewLifecycleOwner, {
            if(it != null) {
                Toast.makeText(context,"",Toast.LENGTH_LONG).show()
                productAdapter.setData(arrayListOf())
                spotAdapter.setData(arrayListOf())
            }
+        })
+
+        viewModel.loading.observe(viewLifecycleOwner, {
+            if(it != null && it){
+                shimmer.showShimmer(true)
+            }else{
+                Handler().postDelayed({
+                    shimmer.hideShimmer()
+                }, 1300)
+            }
         })
     }
 }
